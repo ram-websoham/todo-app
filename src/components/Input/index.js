@@ -3,6 +3,8 @@ import { useFormik } from "formik";
 import { Button, Input, Form } from "antd";
 import { useDispatch  } from "react-redux";
 import { ADD_ITEM, ADD_ITEM_SUCCESS } from '../../Store/Action/todo';
+import { PlusOutlined } from "@ant-design/icons";
+
 
 
 const TodoInput = () => {
@@ -27,8 +29,8 @@ const TodoInput = () => {
   });
 
   return (
-    <Form onFinish={handleSubmit}>
-      <Form.Item name="description">
+    <Form onFinish={handleSubmit} className="todo_form">
+      <Form.Item name="description" style={{ flex: 1 }}>
         <Input
           name="description"
           onChange={handleChange}
@@ -37,8 +39,8 @@ const TodoInput = () => {
       </Form.Item>
       <div className="right">
         <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Add Item
+          <Button htmlType="submit" type="primary" ghost>
+            <PlusOutlined />
           </Button>
         </Form.Item>
       </div>

@@ -1,21 +1,24 @@
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import "./style/App.css";
 import PageNotFound from "./pages/NotFound";
-import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
+      <div>
+        <Navbar />
+      </div>
       <div className="App">
-        <Router>
           <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/register" element={<Register />} />
+            {/* <Route exact path="" element={<Home />} /> */}
+            <Route exact path="/" element={<Register />} />
             <Route exact path="/login" element={<Login />} />
             <Route
               exact
@@ -26,10 +29,11 @@ function App() {
                 </PrivateRoute>
               }
             />
-           
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-        </Router>
+      </div>
+      <div className="footer">
+        <Footer />
       </div>
     </>
   );

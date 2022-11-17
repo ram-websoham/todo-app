@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Input, Button, Form } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import TodoInput from "../../components/Input";
-import { DeleteOutlined, UploadOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined,LogoutOutlined } from "@ant-design/icons";
 import {
   ALL_TODO,
   DELETE_TASK,
   UPDATE_TASK,
   INPUT_CHANGE,
 } from "../../Store/Action/todo";
+import './index.css'
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -56,15 +57,19 @@ const Dashboard = () => {
   }
 
   return (
-    <>
+    <div className="todo_app">
       <div>
-        <h1>Todo List</h1>
+        <div>
+          <h1>Todo List</h1>
+          
+        </div>
+
         <TodoInput />
       </div>
       <div>
         {data?.data?.map((value, index) => {
           return (
-            <Form style={{ display: "flex" }} key={value._id}>
+            <Form className="todo_form" key={value._id}>
               <Input
                 name="description"
                 defaultValue={value.description}
@@ -72,7 +77,7 @@ const Dashboard = () => {
               />
 
               <Button onClick={() => onTodoUpdateHandler(value)}>
-                <UploadOutlined />
+                <EditOutlined />
               </Button>
 
               <Button onClick={() => onTodoDeleteHandler(value._id)}>
@@ -82,7 +87,7 @@ const Dashboard = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

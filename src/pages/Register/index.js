@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { AUTH_REGISTER } from "../../Store/Action/auth";
+import Home from "../Home";
 
 // import { useSelector } from "react-redux";
 
@@ -43,48 +44,53 @@ const Register = () => {
   });
 
   return (
-    <Form {...layout} name="nest-messages" onFinish={handleSubmit}>
-      <h1>Register form</h1>
+    <>
+      <Home />
+      <div className="register_form">
+        <Form {...layout} name="nest-messages" onFinish={handleSubmit}>
+          <h1>Register form</h1>
 
-      <Form.Item name="name" label="Name">
-        <Input onChange={handleChange} onBlur={handleBlur} name="name" />
-      </Form.Item>
+          <Form.Item name="name" label="Name">
+            <Input onChange={handleChange} onBlur={handleBlur} name="name" />
+          </Form.Item>
 
-      <Form.Item name="email" label="Email">
-        <Input onChange={handleChange} onBlur={handleBlur} name="email" />
-      </Form.Item>
+          <Form.Item name="email" label="Email">
+            <Input onChange={handleChange} onBlur={handleBlur} name="email" />
+          </Form.Item>
 
-      <Form.Item name="age" label="Age">
-        <InputNumber
-          onChange={(value) => setFieldValue("age", value)}
-          onBlur={handleBlur}
-          name="age"
-        />
-      </Form.Item>
+          <Form.Item name="age" label="Age">
+            <InputNumber
+              onChange={(value) => setFieldValue("age", value)}
+              onBlur={handleBlur}
+              name="age"
+            />
+          </Form.Item>
 
-      <Form.Item name="password" label="Password">
-        <Input.Password
-          onChange={handleChange}
-          onBlur={handleBlur}
-          name="password"
-        />
-      </Form.Item>
+          <Form.Item name="password" label="Password">
+            <Input.Password
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="password"
+            />
+          </Form.Item>
 
-      <Form.Item
-        wrapperCol={{
-          ...layout.wrapperCol,
-          offset: 10,
-        }}
-      >
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-      <p>
-        You want to need?
-        <Link to={"/login"}>Login</Link>
-      </p>
-    </Form>
+          <Form.Item
+            wrapperCol={{
+              ...layout.wrapperCol,
+              offset: 10,
+            }}
+          >
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+          <p>
+            You want to need?
+            <Link to={"/login"}>Login</Link>
+          </p>
+        </Form>
+      </div>
+    </>
   );
 };
 export default Register;
