@@ -35,6 +35,7 @@ const TodoInput = () => {
           name="description"
           onChange={handleChange}
           placeholder="Enter todo item.."
+          className="input"
         />
       </Form.Item>
       <div className="right">

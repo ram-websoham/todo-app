@@ -9,9 +9,8 @@ const Home = () => {
         <div className="text_align">
           <h1>Welcome on TODO App</h1>
           <h2>
-            You Neet to
-            <Link to="/register"> Register </Link> /{" "}
-            <Link to="/login">Login</Link>
+            You Need to
+            <Link to="/login"> Login</Link>
           </h2>
           <Link to={"/dashboard"}>
             <Button type="primary" danger block>

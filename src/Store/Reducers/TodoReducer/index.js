@@ -80,13 +80,3 @@ const todoReducer = (state = initialValues, action) => {
 };
 
 export default todoReducer;
-
-
- // return {
-      //   ...state,
-      //   loading: false,
-      //   data: {
-      //     ...state.data,
-      //     data: state.data.data,
-      //   },
-      // };

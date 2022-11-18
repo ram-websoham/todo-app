@@ -4,6 +4,8 @@ import {
   AUTH_REGISTER_SUCCESS,
   AUTH_LOGIN_SUCCESS,
   AUTH_FAIL,
+  AUTH_LOGOUT,
+  AUTH_LOGOUT_SUCCESS,
 } from "../../Action/auth";
 
 const initialValues = {
@@ -14,14 +16,9 @@ const initialValues = {
 
 const authReducer = (state = initialValues, action) => {
   switch (action.type) {
+    case AUTH_REGISTER:
     case AUTH_LOGIN:
       return (state = {
-        ...state,
-        loading: true,
-      });
-    case AUTH_REGISTER:
-      return (state = {
-        ...state,
         loading: true,
       });
 

@@ -49,11 +49,15 @@ const Login = () => {
         >
           <h1>Login Form</h1>
           <Form.Item label="Email" name="username">
-            <Input name="email" onChange={handleChange} />
+            <Input name="email" onChange={handleChange} className="input" />
           </Form.Item>
 
-          <Form.Item label="Password" name="password">
-            <Input.Password name="password" onChange={handleChange} />
+          <Form.Item label="Password" name="password" className="input">
+            <Input.Password
+              name="password"
+              onChange={handleChange}
+              className="input"
+            />
           </Form.Item>
 
           <Form.Item
@@ -79,7 +83,7 @@ const Login = () => {
           </Form.Item>
           <p>
             You want to need?
-            <Link to={"/register"}>Register</Link>
+            <Link to={"/"}>Register</Link>
           </p>
         </Form>
       </div>

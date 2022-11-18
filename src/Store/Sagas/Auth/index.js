@@ -1,5 +1,4 @@
 import { takeLatest, put, call } from "redux-saga/effects";
-
 import {
   AUTH_LOGIN,
   AUTH_REGISTER,
@@ -7,7 +6,6 @@ import {
   AUTH_LOGIN_SUCCESS,
   AUTH_FAIL,
 } from "../../Action/auth/index";
-
 import { API } from "../../../Api";
 
 function* onRegister(action) {
@@ -24,7 +22,6 @@ function* onLogin(action) {
   try {
     const response = yield call(API.userLogin, action.payload);
     yield put({ type: AUTH_LOGIN_SUCCESS, payload: response.data });
-    localStorage.setItem("token", response.data.token);
     action.cb && action.cb();
   } catch (error) {
     yield put({ type: AUTH_FAIL, payload: error.response.data });

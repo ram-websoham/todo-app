@@ -8,10 +8,12 @@ import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Bg from "./components/Bg";
 
 function App() {
   return (
     <>
+      <Bg />
       <div>
         <Navbar />
       </div>

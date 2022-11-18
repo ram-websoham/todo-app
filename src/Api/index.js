@@ -27,6 +27,9 @@ export const userRegister = async (data) => {
 export const userLogin = async (data) => {
   return client.post("/user/login", data);
 };
+export const userLogout = async () => {
+  return client.post("/user/logout");
+};
 
 export const allTask = async () => {
   return client.get("/task");
@@ -48,6 +51,7 @@ export const deleteTask = async (id) => {
 export const API = {
   userRegister,
   userLogin,
+  userLogout,
   addTask,
   allTask,
   update,

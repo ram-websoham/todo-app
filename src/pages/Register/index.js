@@ -2,11 +2,10 @@ import { Button, Form, Input, InputNumber  } from "antd";
 import React from "react";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AUTH_REGISTER } from "../../Store/Action/auth";
 import Home from "../Home";
 
-// import { useSelector } from "react-redux";
 
 const layout = {
   labelCol: {
@@ -32,7 +31,6 @@ const Register = () => {
     },
 
     onSubmit: (values) => {
-      // console.log(values);
       dispatch({
         type: AUTH_REGISTER,
         payload: values,
@@ -51,11 +49,21 @@ const Register = () => {
           <h1>Register form</h1>
 
           <Form.Item name="name" label="Name">
-            <Input onChange={handleChange} onBlur={handleBlur} name="name" />
+            <Input
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="name"
+              className="input"
+            />
           </Form.Item>
 
           <Form.Item name="email" label="Email">
-            <Input onChange={handleChange} onBlur={handleBlur} name="email" />
+            <Input
+              onChange={handleChange}
+              onBlur={handleBlur}
+              name="email"
+              className="input"
+            />
           </Form.Item>
 
           <Form.Item name="age" label="Age">
@@ -63,6 +71,7 @@ const Register = () => {
               onChange={(value) => setFieldValue("age", value)}
               onBlur={handleBlur}
               name="age"
+              className="input"
             />
           </Form.Item>
 
@@ -71,6 +80,7 @@ const Register = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               name="password"
+              className="input"
             />
           </Form.Item>
 
@@ -84,10 +94,10 @@ const Register = () => {
               Submit
             </Button>
           </Form.Item>
-          <p>
+          {/* <p>
             You want to need?
             <Link to={"/login"}>Login</Link>
-          </p>
+          </p> */}
         </Form>
       </div>
     </>

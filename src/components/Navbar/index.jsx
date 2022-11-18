@@ -1,23 +1,27 @@
-import { Button } from 'antd';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './index.css';
+import { Button } from 'antd'
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { LOGOUT } from '../../Store/Action/auth'
+import './index.css'
 
-// const isUser = localStorage.getItem('persist:root');
-const token = localStorage.getItem("token");
-// const { token } = isUser.authReducer.token;
-// console.log(token);
+// const isUser = localStorage.getItem('persist:root')
+// console.log(isUser)
+
+const storage = localStorage.getItem('persist:root')
+const authReducer = JSON.parse(storage)?.authReducer || null
+console.log(authReducer)
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleLoginBtn = () => {
     navigate('/login')
   }
 
   const handleLogoutBtn = () => {
-    // localStorage.removeItem('persist:root');
-    localStorage.clear();
+    dispatch({ type: LOGOUT })
     navigate('/')
   }
 
@@ -30,13 +34,17 @@ const Navbar = () => {
           </div>
         </div>
         <div className="btns">
-          {!token ? (
-            <div className="login">
-              <Button onClick={handleLoginBtn}>Login</Button>
+          {authReducer ? (
+            <div className="logout">
+              <Button onClick={handleLogoutBtn} type="danger">
+                Logout
+              </Button>
             </div>
           ) : (
-            <div className="logout">
-              <Button onClick={handleLogoutBtn}>Logout</Button>
+            <div className="login">
+              <Button onClick={handleLoginBtn} type="primary">
+                Login
+              </Button>
             </div>
           )}
         </div>

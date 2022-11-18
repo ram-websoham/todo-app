@@ -52,10 +52,6 @@ const Dashboard = () => {
     });
   };
 
-  if (loading) {
-    return null;
-  }
-
   return (
     <div className="todo_app">
       <div>
@@ -74,13 +70,18 @@ const Dashboard = () => {
                 name="description"
                 defaultValue={value.description}
                 onChange={(event) => onChangeHandler(event, index)}
+                className="input"
               />
 
-              <Button onClick={() => onTodoUpdateHandler(value)}>
+              <Button onClick={() => onTodoUpdateHandler(value)} type="primary" ghost>
                 <EditOutlined />
               </Button>
 
-              <Button onClick={() => onTodoDeleteHandler(value._id)}>
+              <Button
+                onClick={() => onTodoDeleteHandler(value._id)}
+                type="danger"
+                ghost
+              >
                 <DeleteOutlined />
               </Button>
             </Form>
