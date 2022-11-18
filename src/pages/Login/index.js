@@ -2,14 +2,15 @@ import { Button, Checkbox, Form, Input } from "antd";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AUTH_LOGIN } from "../../Store/Action/auth";
 import Home from "../Home";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const loading = useSelector(state => state.authReducer.loading);
+  
   const { handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: "",
@@ -77,7 +78,7 @@ const Login = () => {
               span: 16,
             }}
           >
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={loading}>
               Submit
             </Button>
           </Form.Item>

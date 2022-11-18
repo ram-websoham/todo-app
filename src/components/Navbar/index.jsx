@@ -1,6 +1,6 @@
 import { Button } from 'antd'
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { LOGOUT } from '../../Store/Action/auth'
 import './index.css'
@@ -8,11 +8,12 @@ import './index.css'
 // const isUser = localStorage.getItem('persist:root')
 // console.log(isUser)
 
-const storage = localStorage.getItem('persist:root')
-const authReducer = JSON.parse(storage)?.authReducer || null
-console.log(authReducer)
+// const storage = localStorage.getItem('persist:root')
+// const authReducer = JSON.parse(storage)?.authReducer || null
+// console.log(authReducer)
 
 const Navbar = () => {
+  let isAuthenticated = useSelector((state) => state.authReducer.data)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -34,7 +35,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="btns">
-          {authReducer ? (
+          {isAuthenticated ? (
             <div className="logout">
               <Button onClick={handleLogoutBtn} type="danger">
                 Logout

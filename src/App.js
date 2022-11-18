@@ -1,7 +1,7 @@
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Route, Routes } from "react-router-dom";
-
+import './style/responsive.css';
 import "./style/App.css";
 import PageNotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";

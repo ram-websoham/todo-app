@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import { Button, Input, Form } from "antd";
-import { useDispatch  } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 import { ADD_ITEM, ADD_ITEM_SUCCESS } from '../../Store/Action/todo';
 import { PlusOutlined } from "@ant-design/icons";
 
@@ -10,7 +10,8 @@ import { PlusOutlined } from "@ant-design/icons";
 const TodoInput = () => {
   
   const dispatch = useDispatch();
-
+  
+  const { loading} = useSelector((state) => state.todoReducer);
   const { handleChange, handleSubmit } = useFormik({
     initialValues: {
       description: "",

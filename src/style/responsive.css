@@ -1,0 +1,6 @@
+@media screen and (width: 825px) {
+  .app{
+    flex-direction: row;
+    align-items: center;
+  }
+}

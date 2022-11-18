@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button, Form } from "antd";
+import { Input, Button, Form, Spin } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import TodoInput from "../../components/Input";
 import { DeleteOutlined, EditOutlined,LogoutOutlined } from "@ant-design/icons";
@@ -57,37 +57,45 @@ const Dashboard = () => {
       <div>
         <div>
           <h1>Todo List</h1>
-          
         </div>
 
         <TodoInput />
       </div>
-      <div>
-        {data?.data?.map((value, index) => {
-          return (
-            <Form className="todo_form" key={value._id}>
-              <Input
-                name="description"
-                defaultValue={value.description}
-                onChange={(event) => onChangeHandler(event, index)}
-                className="input"
-              />
 
-              <Button onClick={() => onTodoUpdateHandler(value)} type="primary" ghost>
-                <EditOutlined />
-              </Button>
+      {loading ? (
+        <Spin />
+      ) : (
+        <div>
+          {data?.data?.map((value, index) => {
+            return (
+              <Form className="todo_form" key={value._id}>
+                <Input
+                  name="description"
+                  defaultValue={value.description}
+                  onChange={(event) => onChangeHandler(event, index)}
+                  className="input"
+                />
 
-              <Button
-                onClick={() => onTodoDeleteHandler(value._id)}
-                type="danger"
-                ghost
-              >
-                <DeleteOutlined />
-              </Button>
-            </Form>
-          );
-        })}
-      </div>
+                <Button
+                  onClick={() => onTodoUpdateHandler(value)}
+                  type="primary"
+                  ghost
+                >
+                  <EditOutlined />
+                </Button>
+
+                <Button
+                  onClick={() => onTodoDeleteHandler(value._id)}
+                  type="danger"
+                  ghost
+                >
+                  <DeleteOutlined />
+                </Button>
+              </Form>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
